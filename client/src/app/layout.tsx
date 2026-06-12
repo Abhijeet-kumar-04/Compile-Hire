@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono" });
 
 export const metadata: Metadata = {
-  title: "Fluid AI - AI Interview Preparation & Coding Platform",
+  title: "CompileHire - AI Interview Preparation & Coding Platform",
   description: "An AI-powered technical interviewer, advanced resume parser, and professional coding environment—all in one dark-mode workspace.",
 };
 
