@@ -137,14 +137,19 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="glass-panel p-8 rounded-2xl hover:-translate-y-1 transition-transform cursor-pointer"
-              onClick={() => toast.info(`${feature.title} details are coming soon!`)}
+              className="glass-panel p-8 rounded-2xl flex flex-col hover:-translate-y-1 transition-transform h-full"
             >
               <div className="w-12 h-12 rounded-xl bg-indigo-glow/20 flex items-center justify-center mb-6 text-indigo-glow">
                 <feature.icon size={24} />
               </div>
               <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-              <p className="text-coolgray leading-relaxed">{feature.desc}</p>
+              <p className="text-coolgray leading-relaxed flex-grow mb-6">{feature.desc}</p>
+              
+              <div className="mt-auto pt-6 border-t border-white/5">
+                <GlitchLink text="Launch Module" className="text-indigo-light hover:text-white font-medium text-sm flex items-center transition-colors">
+                  Launch Module
+                </GlitchLink>
+              </div>
             </motion.div>
           ))}
         </div>

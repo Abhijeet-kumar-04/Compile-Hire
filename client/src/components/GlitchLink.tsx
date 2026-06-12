@@ -57,10 +57,38 @@ export default function GlitchLink({ text, className = "", children }: GlitchLin
     }, 30);
   };
 
+  const playClickSound = () => {
+    try {
+      const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
+      if (!AudioContext) return;
+      
+      const ctx = new AudioContext();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      
+      // Short, mechanical 'thwack' or 'click'
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(150, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(40, ctx.currentTime + 0.05);
+      
+      gain.gain.setValueAtTime(0.05, ctx.currentTime); // very low volume
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
+      
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      
+      osc.start();
+      osc.stop(ctx.currentTime + 0.05);
+    } catch (e) {
+      // Browser autoplay policy might block this initially, just fail silently
+    }
+  };
+
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     if (isGlitching) return; // Prevent spam clicking
 
+    playClickSound();
     setIsGlitching(true);
     
     // Scramble to target message
