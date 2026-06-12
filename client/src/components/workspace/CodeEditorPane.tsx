@@ -105,7 +105,7 @@ export default function CodeEditorPane({ code, setCode, defaultLanguage = "javas
     setOutput("");
     
     try {
-      const response = await fetch('http://localhost:5000/api/execute', {
+      const response = await fetch('https://compilehire.onrender.com/api/execute', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code, language })

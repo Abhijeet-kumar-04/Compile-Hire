@@ -21,7 +21,7 @@ export default function HistoryPage() {
     const fetchHistory = async () => {
       try {
         const token = await getToken();
-        const res = await fetch("http://localhost:5000/api/history", {
+        const res = await fetch("https://compilehire.onrender.com/api/history", {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (res.ok) {

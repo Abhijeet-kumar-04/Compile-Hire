@@ -125,7 +125,7 @@ function WorkspaceContent() {
       role:     searchParams.get("role")     || "Software Engineer",
       language: lang,
     };
-    fetch('http://localhost:5000/api/init-interview', {
+    fetch('https://compilehire.onrender.com/api/init-interview', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(prefs)
@@ -191,7 +191,7 @@ function WorkspaceContent() {
       }
       
       console.log('[EndInterview] Calling /api/interview/end...');
-      const res = await fetch('http://localhost:5000/api/interview/end', {
+      const res = await fetch('https://compilehire.onrender.com/api/interview/end', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

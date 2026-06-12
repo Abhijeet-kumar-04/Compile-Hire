@@ -249,7 +249,7 @@ export default function ResultsPage({ params }: { params: Promise<{ id: string }
 
       // 2. If not in local storage (e.g. from history page), fetch from DB
       try {
-        const res = await fetch(`http://localhost:5000/api/results/${sessionId}`);
+        const res = await fetch(`https://compilehire.onrender.com/api/results/${sessionId}`);
         if (res.ok) {
           const data = await res.json();
           if (data.session) {
