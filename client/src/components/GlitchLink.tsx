@@ -64,7 +64,7 @@ export default function GlitchLink({ text, className = "", children }: GlitchLin
     setIsGlitching(true);
     
     // Scramble to target message
-    scramble("[SYSTEM UPDATE PENDING]", 500, () => {
+    scramble("[COMING SOON]", 500, () => {
       setIsResolved(true);
       
       // Hold for 2 seconds
