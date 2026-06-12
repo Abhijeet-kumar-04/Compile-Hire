@@ -385,6 +385,7 @@ function WorkspaceContent() {
         className="flex-1 h-full p-4 md:p-6 z-10"
       >
         <div className="h-full rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)] bg-obsidian/60 backdrop-blur-xl flex ring-1 ring-white/5">
+          {/* @ts-expect-error - react-resizable-panels types are missing direction prop */}
           <Group direction="horizontal">
             
             {/* Left Pane: Chat */}
