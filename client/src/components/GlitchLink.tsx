@@ -110,7 +110,7 @@ export default function GlitchLink({ text, className = "", children }: GlitchLin
     <motion.button
       onClick={handleClick}
       className={`${className} ${
-        isResolved ? "text-emerald-400 drop-shadow-[0_0_10px_rgba(52,211,153,0.8)] font-mono tracking-tight" : ""
+        isResolved ? "!text-emerald-400 drop-shadow-[0_0_10px_rgba(52,211,153,0.8)] font-mono tracking-tight" : ""
       } relative overflow-hidden transition-all duration-200`}
       whileTap={{ scale: 0.97 }}
     >
