@@ -87,9 +87,9 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
             >
-              <button className="w-full sm:w-auto bg-gradient-to-r from-indigo-glow to-indigo-light hover:opacity-90 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all shadow-[0_0_30px_rgba(99,102,241,0.4)] hover:shadow-[0_0_40px_rgba(99,102,241,0.6)] flex items-center justify-center gap-2">
+              <Link href="/dashboard" className="w-full sm:w-auto bg-gradient-to-r from-indigo-glow to-indigo-light hover:opacity-90 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all shadow-[0_0_30px_rgba(99,102,241,0.4)] hover:shadow-[0_0_40px_rgba(99,102,241,0.6)] flex items-center justify-center gap-2">
                 Launch Workspace <ChevronRight size={20} />
-              </button>
+              </Link>
               <button className="w-full sm:w-auto glass-panel hover:bg-white/5 px-8 py-4 rounded-xl text-lg font-semibold transition-all flex items-center justify-center gap-2 group">
                 <span className="group-hover:text-indigo-light transition-colors">View Documentation</span>
               </button>
