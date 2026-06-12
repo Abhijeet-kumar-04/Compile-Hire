@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Code2, FileText, Bot, ChevronRight, MousePointer2, Cpu, Check, Database, Network, Folder, User } from "lucide-react";
 import TesseractCore from "@/components/TesseractCore";
+import { SignInButton, SignUpButton, Show, UserButton } from "@clerk/nextjs";
 export default function Home() {
   return (
     <div className="min-h-screen bg-obsidian text-offwhite selection:bg-indigo-light/30 relative overflow-hidden">
@@ -28,10 +29,19 @@ export default function Home() {
             <a href="#pricing" className="hover:text-offwhite transition-colors">Pricing</a>
           </div>
           <div className="flex items-center gap-5">
-            <button className="text-base font-medium hover:text-indigo-light transition-colors">Sign In</button>
-            <button className="bg-gradient-to-r from-indigo-glow to-indigo-light hover:opacity-90 text-white px-6 py-2.5 rounded-xl text-base font-semibold transition-all shadow-[0_0_20px_rgba(99,102,241,0.4)]">
-              Start Free Trial
-            </button>
+            <Show when="signed-out">
+              <SignInButton mode="modal">
+                <button className="text-base font-medium hover:text-indigo-light transition-colors">Sign In</button>
+              </SignInButton>
+              <SignUpButton mode="modal">
+                <button className="bg-gradient-to-r from-indigo-glow to-indigo-light hover:opacity-90 text-white px-6 py-2.5 rounded-xl text-base font-semibold transition-all shadow-[0_0_20px_rgba(99,102,241,0.4)]">
+                  Start Free Trial
+                </button>
+              </SignUpButton>
+            </Show>
+            <Show when="signed-in">
+              <UserButton appearance={{ elements: { userButtonAvatarBox: "w-10 h-10 shadow-[0_0_15px_rgba(99,102,241,0.5)] border-2 border-indigo-light" } }} />
+            </Show>
           </div>
         </div>
       </nav>

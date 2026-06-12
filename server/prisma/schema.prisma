@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,4 +5,51 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  clerkId   String   @unique
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  sessions  InterviewSession[]
+}
+
+model InterviewSession {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status      String   @default("active") // active, completed
+  overallScore Float?
+  feedback    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  questions   InterviewQuestion[]
+}
+
+model InterviewQuestion {
+  id          String   @id @default(uuid())
+  sessionId   String
+  session     InterviewSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  prompt      String
+  difficulty  String   @default("medium")
+  feedback    String?
+  createdAt   DateTime @default(now())
+
+  submissions CodeSubmission[]
+}
+
+model CodeSubmission {
+  id          String   @id @default(uuid())
+  questionId  String
+  question    InterviewQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  code        String
+  language    String
+  executionTime Int?   // in ms
+  memoryUsed    Int?   // in bytes
+  createdAt   DateTime @default(now())
 }
