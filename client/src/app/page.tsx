@@ -6,6 +6,7 @@ import { Code2, FileText, Bot, ChevronRight, MousePointer2, Cpu, Check, Database
 import TesseractCore from "@/components/TesseractCore";
 import { SignInButton, SignUpButton, Show, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
+import { toast } from "sonner";
 export default function Home() {
   return (
     <div className="min-h-screen bg-obsidian text-offwhite selection:bg-indigo-light/30 relative overflow-hidden">
@@ -105,7 +106,7 @@ export default function Home() {
               <Link href="/dashboard" className="w-full sm:w-auto bg-gradient-to-r from-indigo-glow to-indigo-light hover:opacity-90 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all shadow-[0_0_30px_rgba(99,102,241,0.4)] hover:shadow-[0_0_40px_rgba(99,102,241,0.6)] flex items-center justify-center gap-2">
                 Launch Workspace <ChevronRight size={20} />
               </Link>
-              <button onClick={() => alert("Documentation is coming soon! Our engineers are writing it right now.")} className="w-full sm:w-auto glass-panel hover:bg-white/5 px-8 py-4 rounded-xl text-lg font-semibold transition-all flex items-center justify-center gap-2 group">
+              <button onClick={() => toast.info("Documentation is coming soon! Our engineers are writing it right now.")} className="w-full sm:w-auto glass-panel hover:bg-white/5 px-8 py-4 rounded-xl text-lg font-semibold transition-all flex items-center justify-center gap-2 group">
                 <span className="group-hover:text-indigo-light transition-colors">View Documentation</span>
               </button>
             </motion.div>
@@ -136,7 +137,7 @@ export default function Home() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
               className="glass-panel p-8 rounded-2xl hover:-translate-y-1 transition-transform cursor-pointer"
-              onClick={() => alert(`${feature.title} details are coming soon!`)}
+              onClick={() => toast.info(`${feature.title} details are coming soon!`)}
             >
               <div className="w-12 h-12 rounded-xl bg-indigo-glow/20 flex items-center justify-center mb-6 text-indigo-glow">
                 <feature.icon size={24} />
@@ -194,7 +195,7 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
-                <button onClick={() => alert("Pricing and subscription plans are coming soon!")} className={`w-full py-4 rounded-xl text-sm font-semibold transition-all ${plan.popular ? 'bg-indigo-glow hover:bg-indigo-light text-white shadow-[0_0_20px_rgba(99,102,241,0.4)]' : 'glass-panel hover:bg-white/10'}`}>
+                <button onClick={() => toast.info("Pricing and subscription plans are coming soon!")} className={`w-full py-4 rounded-xl text-sm font-semibold transition-all ${plan.popular ? 'bg-indigo-glow hover:bg-indigo-light text-white shadow-[0_0_20px_rgba(99,102,241,0.4)]' : 'glass-panel hover:bg-white/10'}`}>
                   {plan.button}
                 </button>
               </motion.div>
@@ -218,27 +219,27 @@ export default function Home() {
           <div>
             <h4 className="font-semibold mb-4 text-white">Platform</h4>
             <ul className="space-y-3 text-sm text-coolgray">
-              <li><a href="#" onClick={(e) => { e.preventDefault(); alert("Coming soon!"); }} className="hover:text-indigo-light transition-colors">AI Interviewer</a></li>
-              <li><a href="#" onClick={(e) => { e.preventDefault(); alert("Coming soon!"); }} className="hover:text-indigo-light transition-colors">Coding Environment</a></li>
-              <li><a href="#" onClick={(e) => { e.preventDefault(); alert("Coming soon!"); }} className="hover:text-indigo-light transition-colors">Resume Analyzer</a></li>
-              <li><a href="#" onClick={(e) => { e.preventDefault(); alert("Coming soon!"); }} className="hover:text-indigo-light transition-colors">Pricing</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); toast.info("Coming soon!"); }} className="hover:text-indigo-light transition-colors">AI Interviewer</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); toast.info("Coming soon!"); }} className="hover:text-indigo-light transition-colors">Coding Environment</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); toast.info("Coming soon!"); }} className="hover:text-indigo-light transition-colors">Resume Analyzer</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); toast.info("Coming soon!"); }} className="hover:text-indigo-light transition-colors">Pricing</a></li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold mb-4 text-white">Resources</h4>
             <ul className="space-y-3 text-sm text-coolgray">
-              <li><a href="#" onClick={(e) => { e.preventDefault(); alert("Coming soon!"); }} className="hover:text-indigo-light transition-colors">Documentation</a></li>
-              <li><a href="#" onClick={(e) => { e.preventDefault(); alert("Coming soon!"); }} className="hover:text-indigo-light transition-colors">Interview Guide</a></li>
-              <li><a href="#" onClick={(e) => { e.preventDefault(); alert("Coming soon!"); }} className="hover:text-indigo-light transition-colors">Blog</a></li>
-              <li><a href="#" onClick={(e) => { e.preventDefault(); alert("Coming soon!"); }} className="hover:text-indigo-light transition-colors">Community</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); toast.info("Coming soon!"); }} className="hover:text-indigo-light transition-colors">Documentation</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); toast.info("Coming soon!"); }} className="hover:text-indigo-light transition-colors">Interview Guide</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); toast.info("Coming soon!"); }} className="hover:text-indigo-light transition-colors">Blog</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); toast.info("Coming soon!"); }} className="hover:text-indigo-light transition-colors">Community</a></li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold mb-4 text-white">Legal</h4>
             <ul className="space-y-3 text-sm text-coolgray">
-              <li><a href="#" onClick={(e) => { e.preventDefault(); alert("Coming soon!"); }} className="hover:text-indigo-light transition-colors">Privacy Policy</a></li>
-              <li><a href="#" onClick={(e) => { e.preventDefault(); alert("Coming soon!"); }} className="hover:text-indigo-light transition-colors">Terms of Service</a></li>
-              <li><a href="#" onClick={(e) => { e.preventDefault(); alert("Coming soon!"); }} className="hover:text-indigo-light transition-colors">Contact Us</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); toast.info("Coming soon!"); }} className="hover:text-indigo-light transition-colors">Privacy Policy</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); toast.info("Coming soon!"); }} className="hover:text-indigo-light transition-colors">Terms of Service</a></li>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); toast.info("Coming soon!"); }} className="hover:text-indigo-light transition-colors">Contact Us</a></li>
             </ul>
           </div>
         </div>
