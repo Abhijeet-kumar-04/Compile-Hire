@@ -19,17 +19,23 @@ export default function Home() {
 
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 bg-obsidian/40 backdrop-blur-md border-b border-white/5">
-        <div className="max-w-7xl mx-auto flex items-center justify-between glass-panel px-6 py-3 rounded-2xl">
-          <div className="flex items-center gap-3">
+        <div className="max-w-7xl mx-auto flex items-center justify-between glass-panel px-6 py-3 rounded-2xl relative">
+          {/* Left Side */}
+          <div className="flex items-center gap-3 flex-1">
             <Image src="/logo.png" alt="CompileHire Logo" width={32} height={32} className="rounded-lg shadow-[0_0_15px_rgba(99,102,241,0.5)]" />
             <span className="font-bold text-xl tracking-tight">CompileHire</span>
           </div>
-          <div className="hidden md:flex items-center gap-8 text-base font-medium text-coolgray">
+          
+          {/* Middle */}
+          <div className="hidden md:flex items-center justify-center gap-8 text-base font-medium text-coolgray shrink-0">
             <a href="#features" className="hover:text-offwhite transition-colors">Features</a>
             <a href="#ide" className="hover:text-offwhite transition-colors">Workspace</a>
             <a href="#pricing" className="hover:text-offwhite transition-colors">Pricing</a>
+
           </div>
-          <div className="flex items-center gap-5">
+
+          {/* Right Side */}
+          <div className="flex items-center justify-end gap-5 flex-1">
             <Show when="signed-out">
               <SignInButton mode="modal">
                 <button className="text-base font-medium hover:text-indigo-light transition-colors">Sign In</button>
@@ -41,7 +47,15 @@ export default function Home() {
               </SignUpButton>
             </Show>
             <Show when="signed-in">
-              <UserButton appearance={{ elements: { userButtonAvatarBox: "w-10 h-10 shadow-[0_0_15px_rgba(99,102,241,0.5)] border-2 border-indigo-light" } }} />
+              <UserButton appearance={{ elements: { userButtonAvatarBox: "w-10 h-10 shadow-[0_0_15px_rgba(99,102,241,0.5)] border-2 border-indigo-light" } }}>
+                <UserButton.MenuItems>
+                  <UserButton.Link
+                    label="Interview History"
+                    href="/history"
+                    labelIcon={<Folder size={16} />}
+                  />
+                </UserButton.MenuItems>
+              </UserButton>
             </Show>
           </div>
         </div>
