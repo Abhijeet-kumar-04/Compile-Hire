@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Code2, FileText, Bot, ChevronRight, MousePointer2, Cpu, Check, Database, Network, Folder, User } from "lucide-react";
 import TesseractCore from "@/components/TesseractCore";
 import { SignInButton, SignUpButton, Show, UserButton } from "@clerk/nextjs";
+import Link from "next/link";
 export default function Home() {
   return (
     <div className="min-h-screen bg-obsidian text-offwhite selection:bg-indigo-light/30 relative overflow-hidden">

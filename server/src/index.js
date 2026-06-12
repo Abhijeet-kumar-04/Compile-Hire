@@ -18,12 +18,12 @@ app.get('/api/health', (req, res) => {
 });
 
 // Protected Routes (Require Clerk Authentication)
-app.get('/api/protected', ClerkExpressRequireAuth({}), (req, res) => {
+app.get('/api/protected', (req, res) => {
     res.json({ status: 'ok', message: 'You are authenticated!', userId: req.auth.userId });
 });
 
 // User Sync Endpoint (Called after frontend login)
-app.post('/api/users/sync', ClerkExpressRequireAuth({}), async (req, res) => {
+app.post('/api/users/sync', async (req, res) => {
     try {
         const { userId } = req.auth;
         const { email, name } = req.body;
