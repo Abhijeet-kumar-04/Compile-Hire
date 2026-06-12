@@ -30,10 +30,9 @@ export default function Home() {
           
           {/* Middle */}
           <div className="hidden md:flex items-center justify-center gap-8 text-base font-medium text-coolgray shrink-0">
-            <a href="#features" className="hover:text-offwhite transition-colors">Features</a>
-            <a href="#ide" className="hover:text-offwhite transition-colors">Workspace</a>
-            <a href="#pricing" className="hover:text-offwhite transition-colors">Pricing</a>
-
+            <GlitchLink text="Features" className="hover:text-offwhite transition-colors" />
+            <GlitchLink text="Workspace" className="hover:text-offwhite transition-colors" />
+            <GlitchLink text="Pricing" className="hover:text-offwhite transition-colors" />
           </div>
 
           {/* Right Side */}
