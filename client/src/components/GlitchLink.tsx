@@ -64,7 +64,7 @@ export default function GlitchLink({ text, className = "", children }: GlitchLin
     setIsGlitching(true);
     
     // Scramble to target message
-    scramble("[COMING SOON]", 500, () => {
+    scramble("[MODULE_LOCKED]", 500, () => {
       setIsResolved(true);
       
       // Hold for 2 seconds
