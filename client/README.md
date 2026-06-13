@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CompileHire Client Application
 
-## Getting Started
+This directory contains the frontend Next.js application for CompileHire. It is responsible for delivering a high-performance, dark-themed user interface, managing the interactive coding environment, and communicating securely with the backend API.
 
-First, run the development server:
+## Core Technologies
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+*   **Next.js 14 (App Router):** Utilized for server-side rendering, routing, and optimizing static assets.
+*   **React 19:** The core library for building the user interface components.
+*   **Monaco Editor:** Provides the professional, VS Code-like code editing experience within the browser.
+*   **Tailwind CSS:** A utility-first CSS framework used for all styling and responsive design.
+*   **Framer Motion:** Handles all complex UI animations and layout transitions.
+*   **React Three Fiber / Three.js:** Powers the 3D 'Tesseract' interactive animation on the landing page.
+*   **Clerk React SDK:** Manages user authentication, session state, and secure route protection.
+
+## Client Architecture Flow
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant NextJS as Next.js Router
+    participant Clerk as Clerk Auth
+    participant IDE as Monaco Workspace
+    participant Server as Express Backend
+
+    User->>NextJS: Requests /workspace
+    NextJS->>Clerk: Validate Session State
+    alt Unauthenticated
+        Clerk-->>NextJS: Redirect to /sign-in
+    else Authenticated
+        NextJS-->>User: Render IDE Environment
+        User->>IDE: Writes Code & Executes
+        IDE->>Server: HTTP POST /api/execute
+        Server-->>IDE: Execution Output
+        IDE-->>User: Display Results
+    end
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Directory Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+client/
+├── public/                 # Public assets (images, icons)
+├── src/
+│   ├── app/                # Next.js file-system routing
+│   │   ├── dashboard/      # User portal and statistics
+│   │   ├── history/        # Past interview records
+│   │   ├── workspace/      # Core IDE environment
+│   │   ├── layout.tsx      # Root application layout
+│   │   └── page.tsx        # Public landing page
+│   ├── components/         # Modular React components
+│   │   ├── workspace/      # IDE specific components (Panels, Editor)
+│   │   ├── TesseractCore.tsx # 3D Landing page animation
+│   │   └── GlitchLink.tsx  # Custom animated link component
+│   └── lib/                # Utility functions and shared logic
+├── .env.local              # Local environment variables
+├── next.config.mjs         # Next.js configuration
+├── tailwind.config.ts      # Tailwind styling rules
+└── tsconfig.json           # TypeScript configuration
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment Configuration
 
-## Learn More
+To run the client application, you must create a `.env.local` file in the root of the `client` directory with the following variables:
 
-To learn more about Next.js, take a look at the following resources:
+```env
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*   `npm run dev`: Starts the Next.js development server on `localhost:3000`.
+*   `npm run build`: Creates an optimized production build.
+*   `npm run start`: Starts the application in production mode.
+*   `npm run lint`: Runs ESLint to verify code quality.
